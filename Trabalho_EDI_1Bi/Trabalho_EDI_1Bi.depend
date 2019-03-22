@@ -1,0 +1,18 @@
+# depslib dependency file v1.0
+1553253572 source:c:\devc\trabalho_edi_1bi\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"listaDE.c"
+	"listaSE.c"
+
+1553253484 c:\devc\trabalho_edi_1bi\listade.c
+	"listaDE.h"
+
+1553253874 c:\devc\trabalho_edi_1bi\listade.h
+
+1553253487 c:\devc\trabalho_edi_1bi\listase.c
+	"listaSE.h"
+
+1553254178 c:\devc\trabalho_edi_1bi\listase.h
+
