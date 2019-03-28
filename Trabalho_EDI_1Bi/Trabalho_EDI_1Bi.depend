@@ -16,3 +16,36 @@
 
 1553254178 c:\devc\trabalho_edi_1bi\listase.h
 
+1553742384 source:c:\users\gabri\documents\github\trabalho-estrutura-de-dados-i-1bi\trabalho_edi_1bi\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"listaDE.c"
+	"listaSE.c"
+
+1553741979 c:\users\gabri\documents\github\trabalho-estrutura-de-dados-i-1bi\trabalho_edi_1bi\listas.c
+	<string.h>
+	"listaDE.c"
+	"listaSE.c"
+
+1553740852 c:\users\gabri\documents\github\trabalho-estrutura-de-dados-i-1bi\trabalho_edi_1bi\listas.h
+	"listaDE.c"
+	"listaSE.c"
+	<string.h>
+
+1553741726 c:\users\gabri\documents\github\trabalho-estrutura-de-dados-i-1bi\trabalho_edi_1bi\listade.h
+
+1553741118 c:\users\gabri\documents\github\trabalho-estrutura-de-dados-i-1bi\trabalho_edi_1bi\listase.h
+
+1553740021 source:c:\users\gabri\documents\github\trabalho-estrutura-de-dados-i-1bi\trabalho_edi_1bi\listas.c
+	"listas.h"
+	"listaDE.h"
+	"listaSE.h"
+	<string.h>
+
+1553741725 c:\users\gabri\documents\github\trabalho-estrutura-de-dados-i-1bi\trabalho_edi_1bi\listade.c
+	"listaDE.h"
+
+1553741311 c:\users\gabri\documents\github\trabalho-estrutura-de-dados-i-1bi\trabalho_edi_1bi\listase.c
+	"listaSE.h"
+
