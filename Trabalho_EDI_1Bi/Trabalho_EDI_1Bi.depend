@@ -1,18 +1,51 @@
 # depslib dependency file v1.0
-1553253572 source:c:\devc\trabalho_edi_1bi\main.c
+1553854942 source:c:\devc\trabalho_edi_1bi\main.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
 	"listaDE.c"
 	"listaSE.c"
 
-1553253484 c:\devc\trabalho_edi_1bi\listade.c
+1553818640 c:\devc\trabalho_edi_1bi\listade.c
 	"listaDE.h"
 
-1553253874 c:\devc\trabalho_edi_1bi\listade.h
+1553741728 c:\devc\trabalho_edi_1bi\listade.h
 
-1553253487 c:\devc\trabalho_edi_1bi\listase.c
+1553831630 c:\devc\trabalho_edi_1bi\listase.c
 	"listaSE.h"
 
-1553254178 c:\devc\trabalho_edi_1bi\listase.h
+1553830256 c:\devc\trabalho_edi_1bi\listase.h
+
+1553910513 source:c:\users\gabri\documents\github\trabalho-estrutura-de-dados-i-1bi\trabalho_edi_1bi\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"listaDE.c"
+	"listaSE.c"
+
+1553741979 c:\users\gabri\documents\github\trabalho-estrutura-de-dados-i-1bi\trabalho_edi_1bi\listas.c
+	<string.h>
+	"listaDE.c"
+	"listaSE.c"
+
+1553740852 c:\users\gabri\documents\github\trabalho-estrutura-de-dados-i-1bi\trabalho_edi_1bi\listas.h
+	"listaDE.c"
+	"listaSE.c"
+	<string.h>
+
+1553907603 c:\users\gabri\documents\github\trabalho-estrutura-de-dados-i-1bi\trabalho_edi_1bi\listade.h
+
+1553906430 c:\users\gabri\documents\github\trabalho-estrutura-de-dados-i-1bi\trabalho_edi_1bi\listase.h
+
+1553740021 source:c:\users\gabri\documents\github\trabalho-estrutura-de-dados-i-1bi\trabalho_edi_1bi\listas.c
+	"listas.h"
+	"listaDE.h"
+	"listaSE.h"
+	<string.h>
+
+1553911261 c:\users\gabri\documents\github\trabalho-estrutura-de-dados-i-1bi\trabalho_edi_1bi\listade.c
+	"listaDE.h"
+
+1553910999 c:\users\gabri\documents\github\trabalho-estrutura-de-dados-i-1bi\trabalho_edi_1bi\listase.c
+	"listaSE.h"
 
