@@ -26,5 +26,6 @@ void posListaDE(ListaDE lst, int pos);
 char *infoListaDE(ListaDE lst);
 int longListaDE(ListaDE lst);
 int fimListaDE(ListaDE lst);
+void printListaDE(ListaDE listaDE);
 
 #endif // LISTADE_H_INCLUDED

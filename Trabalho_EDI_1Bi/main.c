@@ -6,11 +6,14 @@
 #include "listaSE.c"
 
 void testListaDE();
+void testListaSE();
+
 int main()
 {
     printf("Hello world!\n\n");
 
     testListaDE();
+    testListaSE();
 
     return 0;
 }
@@ -24,12 +27,47 @@ void testListaDE()
     anxListaDE(listaDE,"Cidade 3");
 
     printf("> Lista de Cidades:\n");
-    printf("[|");
-    for(primListaDE(listaDE); !fimListaDE(listaDE); segListaDE(listaDE))
-    {
-        printf(" %s |", listaDE->iterador->info);
-    }
-    printf("]\n");
+    printListaDE(listaDE);
     free(listaDE);
-    printf("==============================================\n");
+    printf("==============================================\n\n");
+}
+
+void testListaSE()
+{
+    printf("=============== TESTE LISTA_SE ===============\n");
+    ListaSE listaSE = inicListaSE();
+
+    // ANEXAR RODOVIAS E CIDADES
+    InfoRodovia infoR1;
+    strcpy(infoR1.rodovia, "BR101");
+    infoR1.cidades = inicListaDE();
+    anxListaDE(infoR1.cidades, "Viana");
+    anxListaSE(listaSE, infoR1);
+
+    InfoRodovia infoR2;
+    strcpy(infoR2.rodovia, "BR166");
+    infoR2.cidades = inicListaDE();
+    anxListaDE(infoR2.cidades, "Guarapari");
+    anxListaSE(listaSE, infoR2);
+
+    InfoRodovia infoR3;
+    strcpy(infoR3.rodovia, "BR107");
+    infoR3.cidades = inicListaDE();
+    anxListaSE(listaSE, infoR3);
+
+    ListaDE listaCidades = listaSE->iterador->info.cidades;
+    anxListaDE(listaCidades, "VIX");
+    anxListaDE(listaCidades, "Vila Velha");
+    anxListaDE(listaCidades, "Vitoria");
+
+    // IMPRIMIR LISTAS
+    printf("> Lista de Rodovias:\n");
+    printListaSE(listaSE);
+
+    printf("> Lista de Rodovias com o terceiro elemento eliminado:\n");
+    ultListaSE(listaSE); elimListaSE(listaSE);
+    printListaSE(listaSE);
+
+    free(listaSE);
+    printf("==============================================\n\n");
 }

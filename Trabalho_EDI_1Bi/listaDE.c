@@ -8,7 +8,7 @@ ListaDE inicListaDE(void)
     lst = (ListaDE) malloc(sizeof(struct TListaDE));
     if(lst == NULL)
     {
-        printf("ERRO, nao foi possivel alocar a Lista\n");
+        printf("ERRO, nao foi possivel alocar a ListaDE\n");
         exit(1);
     }
 
@@ -24,6 +24,12 @@ void anxListaDE(ListaDE lst, char elem[MAX])
 {
     pListaNoDE novaCidade;
     novaCidade = (pListaNoDE) malloc(sizeof(struct ListaNoDE));
+    if(novaCidade == NULL)
+    {
+        printf("ERRO, nao foi possivel alocar pListaNoDE\n");
+        exit(1);
+    }
+
     strcpy(novaCidade->info, elem);
     novaCidade->ant = NULL;
     novaCidade->prox = NULL;
@@ -40,7 +46,6 @@ void anxListaDE(ListaDE lst, char elem[MAX])
         lst->iterador->prox = novaCidade;
         novaCidade->ant = lst->iterador;
         lst->ultimo = novaCidade;
-        lst->iterador = novaCidade;
         lst->longitude++;
     }
     else
@@ -49,7 +54,6 @@ void anxListaDE(ListaDE lst, char elem[MAX])
         novaCidade->ant = lst->iterador;
         lst->iterador->prox->ant = novaCidade;
         lst->iterador->prox = novaCidade;
-        lst->iterador = novaCidade;
         lst->longitude++;
     }
 }
@@ -104,4 +108,13 @@ int fimListaDE(ListaDE lst)
         return 1;
     else
         return 0;
+}
+void printListaDE(ListaDE listaDE)
+{
+    printf("{|");
+    for(primListaDE(listaDE); !fimListaDE(listaDE); segListaDE(listaDE))
+    {
+        printf(" %s |", listaDE->iterador->info);
+    }
+    printf("}\n");
 }
