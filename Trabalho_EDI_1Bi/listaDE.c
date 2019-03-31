@@ -57,8 +57,80 @@ void anxListaDE(ListaDE lst, char elem[MAX])
         lst->longitude++;
     }
 }
-//void insListaDE(ListaDE lst, char elem[MAX]);
-//void elimListaDE(ListaDE lst);
+void insListaDE(ListaDE lst, char elem[MAX])
+{
+    pListaNoDE novaCidade;
+    novaCidade = (pListaNoDE) malloc(sizeof(struct ListaNoDE));
+    strcpy(novaCidade->info, elem);
+    novaCidade->ant = NULL;
+    novaCidade->prox = NULL;
+    if(lst->longitude == 0)
+    {
+        lst->primeiro = novaCidade;
+        lst->iterador = novaCidade;
+        lst->ultimo = novaCidade;
+        lst->longitude++;
+    }
+    else if(lst->iterador == lst->primeiro)
+    {
+        novaCidade->prox = lst->iterador;
+        lst->iterador->ant = novaCidade;
+        lst->iterador = novaCidade;
+        lst->primeiro = novaCidade;
+        lst->longitude++;
+    }
+    else
+    {
+        novaCidade->prox = lst->iterador;
+        novaCidade->ant = lst->iterador->ant;
+        lst->iterador->ant = novaCidade;
+        novaCidade->ant->prox = novaCidade;
+        lst->iterador = novaCidade;
+        lst->longitude++;
+    }
+}
+void elimListaDE(ListaDE lst)
+{
+    if(lst->longitude == 0)
+    {
+        printf("ERRO! a lista esta vazia");
+    }
+    else if(lst->longitude == 1)
+    {
+        lst->longitude = 0;
+        lst->iterador = NULL;
+        lst->primeiro = NULL;
+        lst->ultimo = NULL;
+        free(lst->iterador);
+    }
+    else
+    {
+        if(lst->iterador == lst->primeiro)
+        {
+            lst->primeiro = lst->iterador->prox;
+            lst->iterador = lst->primeiro;
+            lst->longitude--;
+            free(lst->primeiro->ant);
+            lst->primeiro->ant = NULL;
+        }
+        else if(lst->iterador == lst->ultimo)
+        {
+            lst->ultimo = lst->iterador->ant;
+            lst->iterador = lst->ultimo;
+            lst->longitude--;
+            free(lst->ultimo->prox);
+            lst->ultimo->prox = NULL;
+        }
+        else
+        {
+            lst->iterador->ant->prox = lst->iterador->prox;
+            lst->iterador->prox->ant = lst->iterador->ant;
+            lst->iterador = lst->iterador->prox;
+            lst->longitude--;
+        }
+    }
+
+}
 void primListaDE(ListaDE lst)
 {
     lst->iterador = lst->primeiro;
@@ -73,7 +145,7 @@ void segListaDE(ListaDE lst)
 }
 void posListaDE(ListaDE lst, int pos)
 {
-    // CASO A POSIÇCÃO FOR MAIOR QUE A LONGITUDE
+    // CASO A POSIÃ‡CÃƒO FOR MAIOR QUE A LONGITUDE
     if(pos > lst->longitude || pos == 0)
     {
         lst->iterador = NULL;
