@@ -8,7 +8,7 @@ ListaDE inicListaDE(void)
     lst = (ListaDE) malloc(sizeof(struct TListaDE));
     if(lst == NULL)
     {
-        printf("ERRO, nao foi possivel alocar a ListaDE\n");
+        printf("\nERRO, nao foi possivel alocar a ListaDE\n\n");
         exit(1);
     }
 
@@ -26,10 +26,11 @@ void anxListaDE(ListaDE lst, char elem[MAX])
     novaCidade = (pListaNoDE) malloc(sizeof(struct ListaNoDE));
     if(novaCidade == NULL)
     {
-        printf("ERRO, nao foi possivel alocar pListaNoDE\n");
+        printf("\nERRO, nao foi possivel alocar pListaNoDE\n\n");
         exit(1);
     }
 
+    // INSERIR VALORES INICIAIS
     strcpy(novaCidade->info, elem);
     novaCidade->ant = NULL;
     novaCidade->prox = NULL;
@@ -59,11 +60,19 @@ void anxListaDE(ListaDE lst, char elem[MAX])
 }
 void insListaDE(ListaDE lst, char elem[MAX])
 {
-    pListaNoDE novaCidade;
+    pListaNoDE novaCidade = NULL;
     novaCidade = (pListaNoDE) malloc(sizeof(struct ListaNoDE));
+    if(novaCidade == NULL)
+    {
+        printf("\nERRO, nao foi possivel alocar pListaNoDE\n\n");
+        exit(1);
+    }
+
+    // INSERIR VALORES INICIAIS
     strcpy(novaCidade->info, elem);
     novaCidade->ant = NULL;
     novaCidade->prox = NULL;
+
     if(lst->longitude == 0)
     {
         lst->primeiro = novaCidade;
@@ -75,7 +84,6 @@ void insListaDE(ListaDE lst, char elem[MAX])
     {
         novaCidade->prox = lst->iterador;
         lst->iterador->ant = novaCidade;
-        lst->iterador = novaCidade;
         lst->primeiro = novaCidade;
         lst->longitude++;
     }
@@ -85,15 +93,15 @@ void insListaDE(ListaDE lst, char elem[MAX])
         novaCidade->ant = lst->iterador->ant;
         lst->iterador->ant = novaCidade;
         novaCidade->ant->prox = novaCidade;
-        lst->iterador = novaCidade;
         lst->longitude++;
     }
 }
 void elimListaDE(ListaDE lst)
 {
+    pListaNoDE elim = lst->iterador;
     if(lst->longitude == 0)
     {
-        printf("ERRO! a lista esta vazia");
+        printf("\nERRO, a lista esta vazia, nao eh possivel eliminar mais elementos da ListaDE.\n\n");
     }
     else if(lst->longitude == 1)
     {
@@ -101,7 +109,7 @@ void elimListaDE(ListaDE lst)
         lst->iterador = NULL;
         lst->primeiro = NULL;
         lst->ultimo = NULL;
-        free(lst->iterador);
+        free(elim);
     }
     else
     {
@@ -110,15 +118,13 @@ void elimListaDE(ListaDE lst)
             lst->primeiro = lst->iterador->prox;
             lst->iterador = lst->primeiro;
             lst->longitude--;
-            free(lst->primeiro->ant);
             lst->primeiro->ant = NULL;
         }
         else if(lst->iterador == lst->ultimo)
         {
             lst->ultimo = lst->iterador->ant;
-            lst->iterador = lst->ultimo;
+            lst->iterador = NULL;
             lst->longitude--;
-            free(lst->ultimo->prox);
             lst->ultimo->prox = NULL;
         }
         else
@@ -128,19 +134,34 @@ void elimListaDE(ListaDE lst)
             lst->iterador = lst->iterador->prox;
             lst->longitude--;
         }
+        free(elim);
     }
-
 }
 void primListaDE(ListaDE lst)
 {
+    if(lst == NULL)
+    {
+        printf("ERRO. Iterador indefinido.");
+        return;
+    }
     lst->iterador = lst->primeiro;
 }
 void ultListaDE(ListaDE lst)
 {
+    if(lst == NULL)
+    {
+        printf("ERRO. Iterador indefinido.");
+        return;
+    }
     lst->iterador = lst->primeiro;
 }
 void segListaDE(ListaDE lst)
 {
+    if(lst == NULL)
+    {
+        printf("ERRO. Iterador indefinido.");
+        return;
+    }
     lst->iterador = lst->iterador->prox;
 }
 void posListaDE(ListaDE lst, int pos)

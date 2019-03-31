@@ -17,8 +17,8 @@ typedef struct TListaDE
 
 ListaDE inicListaDE(void);
 void anxListaDE(ListaDE lst, char elem[MAX]);
-//void insListaDE(ListaDE lst, char elem[MAX]);
-//void elimListaDE(ListaDE lst);
+void insListaDE(ListaDE lst, char elem[MAX]);
+void elimListaDE(ListaDE lst);
 void primListaDE(ListaDE lst);
 void ultListaDE(ListaDE lst);
 void segListaDE(ListaDE lst);

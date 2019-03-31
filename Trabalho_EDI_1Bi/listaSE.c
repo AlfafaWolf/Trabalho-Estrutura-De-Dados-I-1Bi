@@ -115,14 +115,29 @@ void elimListaSE(ListaSE lst)
 }
 void primListaSE(ListaSE lst)
 {
+    if(lst == NULL)
+    {
+        printf("ERRO. Iterador indefinido.");
+        return;
+    }
     lst->iterador = lst->primeiro;
 }
 void ultListaSE(ListaSE lst)
 {
+    if(lst == NULL)
+    {
+        printf("ERRO. Iterador indefinido.");
+        return;
+    }
     lst->iterador = lst->ultimo;
 }
 void segListaSE(ListaSE lst)
 {
+    if(lst == NULL)
+    {
+        printf("ERRO. Iterador indefinido.");
+        return;
+    }
     lst->iterador = lst->iterador->prox;
 }
 void posListaSE(ListaSE lst, int pos)

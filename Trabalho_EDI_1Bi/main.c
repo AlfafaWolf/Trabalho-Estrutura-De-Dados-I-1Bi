@@ -57,15 +57,30 @@ void testListaSE()
 
     ListaDE listaCidades = listaSE->iterador->info.cidades;
     anxListaDE(listaCidades, "VIX");
-    anxListaDE(listaCidades, "Vila Velha");
-    anxListaDE(listaCidades, "Vitoria");
+    insListaDE(listaCidades, "Vila Velha");
+    insListaDE(listaCidades, "Vitoria");
 
     // IMPRIMIR LISTAS
     printf("> Lista de Rodovias:\n");
     printListaSE(listaSE);
 
     printf("> Lista de Rodovias com o terceiro elemento eliminado:\n");
-    ultListaSE(listaSE); elimListaSE(listaSE);
+    primListaSE(listaSE); segListaSE(listaSE); elimListaSE(listaSE);
+    printListaSE(listaSE);
+
+    printf("> Lista de Rodovias com o cidades eliminadas:\n");
+    primListaSE(listaSE); segListaSE(listaSE);
+    listaCidades = listaSE->iterador->info.cidades;
+    elimListaDE(listaCidades); //elimListaDE(listaCidades);
+    printListaSE(listaSE);
+
+    printf("> Lista de Rodovias eliminando e anexando/inserindo cidades:\n");
+    primListaSE(listaSE);
+    listaCidades = listaSE->iterador->info.cidades;
+    primListaDE(listaCidades);
+    elimListaDE(listaCidades); elimListaDE(listaCidades); segListaDE(listaCidades);
+    anxListaDE(listaCidades, "ANX");
+    insListaDE(listaCidades, "INS");
     printListaSE(listaSE);
 
     free(listaSE);
