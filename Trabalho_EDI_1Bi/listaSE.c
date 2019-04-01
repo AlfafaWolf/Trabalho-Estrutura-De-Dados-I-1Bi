@@ -53,19 +53,74 @@ void anxListaSE(ListaSE lst, InfoRodovia elem)
     }
     else
     {
-        // CASO NÃO
+        // CASO NÃƒO
         pLstNo->prox = lst->iterador->prox;
         lst->iterador->prox = pLstNo;
     }
     lst->longitude++;
 
-    // CASO O NOVO BLOCO FOR O ÚLTIMO DA LISTA
+    // CASO O NOVO BLOCO FOR O ÃšLTIMO DA LISTA
     if(pLstNo->prox == NULL)
     {
         lst->ultimo = pLstNo;
     }
 }
-//void insListaSE(ListaSE lst, InfoRodovia elem);
+void insListaSE(ListaSE lst, InfoRodovia elem)
+{
+    // CASO O INTERADOR FOR NULO
+    if(lst->iterador == NULL && longListaSE(lst) > 0)
+    {
+        printf("ERRO, interador nao definido, nao foi possivel inserir elemento\n");
+        return;
+    }
+
+    // ALOCAR
+    pListaNoSE novaRodovia = NULL;
+    novaRodovia = (pListaNoSE) malloc(sizeof(struct ListaNoSE));
+    pListaNoSE aux = NULL;
+    aux = (pListaNoSE) malloc(sizeof(struct ListaNoSE));
+    if(novaRodovia == NULL)
+    {
+        printf("ERRO, nao foi possivel alocar o elemento\n");
+        exit(1);
+    }
+
+    // VALORES INICIAIS
+    strcpy(novaRodovia->info.rodovia, elem.rodovia);
+    novaRodovia->info.cidades = elem.cidades;
+    novaRodovia->prox = NULL;
+
+    // CASO A LISTA SEJA VAZIA
+    if(longListaSE(lst) == 0)
+    {
+        printf("Primeiro membro da lista\n");
+        lst->iterador = novaRodovia;
+        lst->primeiro = novaRodovia;
+        lst->ultimo   = novaRodovia;
+    }
+    else if(lst->iterador == lst->primeiro)
+    {
+        printf("Iterador eh o primeiro\n");
+        lst->primeiro = novaRodovia;
+        novaRodovia->prox = lst->iterador;
+    }
+    else
+    {
+        printf("Elemento no meio da lista\n");
+        novaRodovia->prox = lst->iterador;
+        aux = lst->iterador;
+        for(lst->iterador = lst->primeiro; !fimListaSE(lst); segListaSE(lst))
+        {
+            if(lst->iterador->prox == aux)
+            {
+                lst->iterador->prox = novaRodovia;
+                lst->iterador = aux;
+                break;
+            }
+        }
+    }
+    lst->longitude++;
+}
 void elimListaSE(ListaSE lst)
 {
     if(lst->iterador == NULL)
@@ -142,7 +197,7 @@ void segListaSE(ListaSE lst)
 }
 void posListaSE(ListaSE lst, int pos)
 {
-    // CASO A POSIÇCÃO FOR MAIOR QUE A LONGITUDE
+    // CASO A POSIÃ‡CÃƒO FOR MAIOR QUE A LONGITUDE
     if(pos > lst->longitude || pos == 0)
     {
         lst->iterador = NULL;
