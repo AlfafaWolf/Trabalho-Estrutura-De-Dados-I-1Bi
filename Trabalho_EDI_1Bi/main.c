@@ -7,15 +7,108 @@
 
 void testListaDE();
 void testListaSE();
-
+ListaSE LerDados(char* nomeArquivoRodovia, char* nomeArquivoCidades);
 int main()
 {
-    printf("Hello world!\n\n");
+    //printf("Hello world!\n\n");
 
-    testListaDE();
-    testListaSE();
+    //testListaDE();
+    //testListaSE();
+
+    ListaSE lstSE = LerDados("listaRodovias.txt", "listaCidades.txt");
+    printf("\nListaSE:\n");
+    printListaSE(lstSE);
 
     return 0;
+}
+
+ListaSE LerDados(char* nomeArquivoRodovia, char* nomeArquivoCidades)
+{
+    ListaSE lstRodovias = inicListaSE();
+    int i;
+    char CR, CC; // CR = char Rodovia | CC = char Cidade
+    char auxiliar[MAX];
+    FILE *arquivoRodovia;
+    arquivoRodovia = fopen(nomeArquivoRodovia, "r");
+    if(arquivoRodovia == 0)
+    {
+        printf("Erro ao tentar abrir o arquivo de Rodovias\n");
+        fclose(arquivoRodovia);
+    }
+    else
+    {
+        int j;
+        FILE* arquivoCidade;
+        arquivoCidade = fopen(nomeArquivoCidades, "r");
+        if(arquivoCidade == 0)
+        {
+            printf("Erro ao tentar abrir o arquivo de Cidades\n");
+            fclose(arquivoCidade);
+        }
+        else
+        {
+            i = 0;
+            do
+            {
+                CR = getc(arquivoRodovia);
+                // CASO FOR UMA LETRA
+                if(CR != '\n' && CR != EOF)
+                {
+                    auxiliar[i] = CR;
+                    i++;
+                }
+                else
+                {
+                    auxiliar[i] = '\0';
+                    // IMPEDIR LINHAS VAZIAS NO ARQUIVO DA CIDADE
+                    if(auxiliar[0] != '\0')
+                    {
+                        printf("%s\n", auxiliar); // DEBUG
+
+                        // CRIAR INFO RODOVIA E ADICIONAR INFO NO NÓ DA RODOVIA ATUAL
+                        InfoRodovia infoRodovia;
+                        infoRodovia.cidades = inicListaDE();   // INICIAR LISTA
+                        strcpy(infoRodovia.rodovia, auxiliar); // ADICIONAR O NOME DA RODOVIA
+                        anxListaSE(lstRodovias, infoRodovia);  // ANEXAR INFO RODOVIA
+                        ultListaSE(lstRodovias);
+
+                        // ANEXAR CIDADES NA RODOVIA
+                        ListaDE lstCidades = infoRodovia.cidades;
+                        j = 0;
+                        do
+                        {
+                            CC = getc(arquivoCidade);
+                            // CASO FOR UMA LETRA
+                            if(CC != '\n' && CC != EOF && CC != ' ')
+                            {
+                                auxiliar[j] = CC;
+                                j++;
+                            }
+                            else
+                            {
+                                auxiliar[j] = '\0';
+                                if(auxiliar[0] != '\0')
+                                {
+                                    printf("%s\n", auxiliar); // DEBUG
+
+                                    // ANEXAR CIDADE E DEIXAR O ITERADOR NO ULTIMO ELEMENTO
+                                    anxListaDE(lstCidades, auxiliar);
+                                    ultListaDE(lstCidades);
+                                }
+                                j = 0;
+                            }
+                        }while(CC != '\n' && CC != EOF); // CIDADES //
+                    }
+                    i = 0;
+                }
+            }while(CR != EOF); // RODOVIAS //
+
+            // FECHAR ARQUIVOS
+            fclose(arquivoRodovia);
+            fclose(arquivoCidade);
+        }
+    }
+    return lstRodovias;
 }
 
 void testListaDE()

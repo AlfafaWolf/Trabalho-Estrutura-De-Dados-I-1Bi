@@ -153,7 +153,7 @@ void ultListaDE(ListaDE lst)
         printf("ERRO. Iterador indefinido.");
         return;
     }
-    lst->iterador = lst->primeiro;
+    lst->iterador = lst->ultimo;
 }
 void segListaDE(ListaDE lst)
 {
