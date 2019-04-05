@@ -77,8 +77,6 @@ void insListaSE(ListaSE lst, InfoRodovia elem)
     // ALOCAR
     pListaNoSE novaRodovia = NULL;
     novaRodovia = (pListaNoSE) malloc(sizeof(struct ListaNoSE));
-    pListaNoSE aux = NULL;
-    aux = (pListaNoSE) malloc(sizeof(struct ListaNoSE));
     if(novaRodovia == NULL)
     {
         printf("ERRO, nao foi possivel alocar o elemento\n");
@@ -93,22 +91,19 @@ void insListaSE(ListaSE lst, InfoRodovia elem)
     // CASO A LISTA SEJA VAZIA
     if(longListaSE(lst) == 0)
     {
-        printf("Primeiro membro da lista\n");
         lst->iterador = novaRodovia;
         lst->primeiro = novaRodovia;
         lst->ultimo   = novaRodovia;
     }
     else if(lst->iterador == lst->primeiro)
     {
-        printf("Iterador eh o primeiro\n");
         lst->primeiro = novaRodovia;
         novaRodovia->prox = lst->iterador;
     }
     else
     {
-        printf("Elemento no meio da lista\n");
         novaRodovia->prox = lst->iterador;
-        aux = lst->iterador;
+        pListaNoSE aux = lst->iterador;
         for(lst->iterador = lst->primeiro; !fimListaSE(lst); segListaSE(lst))
         {
             if(lst->iterador->prox == aux)

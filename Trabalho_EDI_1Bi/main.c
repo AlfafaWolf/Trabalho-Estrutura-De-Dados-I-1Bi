@@ -10,11 +10,11 @@ void testListaSE();
 ListaSE LerDados(char* nomeArquivoRodovia, char* nomeArquivoCidades);
 int main()
 {
-    //printf("Hello world!\n\n");
-
+    // TESTES
     //testListaDE();
     //testListaSE();
 
+    // ARQUIVO
     ListaSE lstSE = LerDados("listaRodovias.txt", "listaCidades.txt");
     printf("\nListaSE:\n");
     printListaSE(lstSE);
@@ -63,7 +63,7 @@ ListaSE LerDados(char* nomeArquivoRodovia, char* nomeArquivoCidades)
                     // IMPEDIR LINHAS VAZIAS NO ARQUIVO DA CIDADE
                     if(auxiliar[0] != '\0')
                     {
-                        printf("%s\n", auxiliar); // DEBUG
+                        printf("> %s\n", auxiliar); // DEBUG RODOVIA //
 
                         // CRIAR INFO RODOVIA E ADICIONAR INFO NO NÓ DA RODOVIA ATUAL
                         InfoRodovia infoRodovia;
@@ -89,7 +89,7 @@ ListaSE LerDados(char* nomeArquivoRodovia, char* nomeArquivoCidades)
                                 auxiliar[j] = '\0';
                                 if(auxiliar[0] != '\0')
                                 {
-                                    printf("%s\n", auxiliar); // DEBUG
+                                    printf("\t%s\n", auxiliar); // DEBUG CIDADE //
 
                                     // ANEXAR CIDADE E DEIXAR O ITERADOR NO ULTIMO ELEMENTO
                                     anxListaDE(lstCidades, auxiliar);
@@ -115,12 +115,22 @@ void testListaDE()
 {
     printf("=============== TESTE LISTA_DE ===============\n");
     ListaDE listaDE = inicListaDE();
-    anxListaDE(listaDE,"Cidade 1");
-    anxListaDE(listaDE,"Cidade 2");
-    anxListaDE(listaDE,"Cidade 3");
+    anxListaDE(listaDE,"Cidade 1"); ultListaDE(listaDE);
+    anxListaDE(listaDE,"Cidade 2"); ultListaDE(listaDE);
+    anxListaDE(listaDE,"Cidade 3"); ultListaDE(listaDE);
 
     printf("> Lista de Cidades:\n");
     printListaDE(listaDE);
+
+    printf("\n> Inserindo Cidade:\n");
+    primListaDE(listaDE);
+    insListaDE(listaDE, "INS - Com Iterador no Prim");
+
+    ultListaDE(listaDE);
+    insListaDE(listaDE, "INS - Com Iterador no Ult");
+
+    printListaDE(listaDE);
+
     free(listaDE);
     printf("==============================================\n\n");
 }
@@ -157,7 +167,7 @@ void testListaSE()
     printf("> Lista de Rodovias:\n");
     printListaSE(listaSE);
 
-    printf("> Lista de Rodovias com o terceiro elemento eliminado:\n");
+    printf("> Lista de Rodovias com o segundo elemento eliminado:\n");
     primListaSE(listaSE); segListaSE(listaSE); elimListaSE(listaSE);
     printListaSE(listaSE);
 
@@ -176,6 +186,30 @@ void testListaSE()
     insListaDE(listaCidades, "INS");
     printListaSE(listaSE);
 
+    // INSERINDO CIDADES
+    printf("> Inserindo Cidades:\n");
+    ListaSE listaSE_2 = inicListaSE();
+
+    InfoRodovia infoRod1;
+    strcpy(infoRod1.rodovia, "INS_1");
+    infoRod1.cidades = inicListaDE();
+
+    InfoRodovia infoRod2;
+    strcpy(infoRod2.rodovia, "INS_2");
+    infoRod2.cidades = inicListaDE();
+
+    InfoRodovia infoRod3;
+    strcpy(infoRod3.rodovia, "INS_3");
+    infoRod3.cidades = inicListaDE();
+
+    insListaSE(listaSE_2, infoRod1);
+    insListaSE(listaSE_2, infoRod2);
+    insListaSE(listaSE_2, infoRod3);
+
+    printListaSE(listaSE_2);
+
+    // FREE
+    free(listaSE_2);
     free(listaSE);
     printf("==============================================\n\n");
 }

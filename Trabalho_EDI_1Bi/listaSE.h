@@ -23,7 +23,7 @@ typedef struct TListaSE
 
 ListaSE inicListaSE(void);
 void anxListaSE(ListaSE lst, InfoRodovia elem);
-//void insListaSE(ListaSE lst, InfoRodovia elem);
+void insListaSE(ListaSE lst, InfoRodovia elem);
 void elimListaSE(ListaSE lst);
 void primListaSE(ListaSE lst);
 void ultListaSE(ListaSE lst);
