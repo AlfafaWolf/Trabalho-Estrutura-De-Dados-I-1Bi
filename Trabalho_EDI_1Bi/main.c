@@ -20,10 +20,13 @@ int main()
     ListaSE lstSE = LerDados("listaRodovias.txt", "listaCidades.txt");
     printf("\nListaSE:\n");
     printListaSE(lstSE);
+
+    // FUNCAO
     ListaSE lstvix;
     lstvix = rodoviasCidade("vix", lstSE);
     printf("Rodovias que passam por vix: \n\n");
     printListaSE(lstvix);
+
     return 0;
 }
 
