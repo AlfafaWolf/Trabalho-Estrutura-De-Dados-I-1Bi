@@ -49,3 +49,20 @@
 1554507927 c:\users\gabri\documents\github\trabalho-estrutura-de-dados-i-1bi\trabalho_edi_1bi\listase.c
 	"listaSE.h"
 
+1554684699 source:c:\users\pichau\documents\github\trabalho-estrutura-de-dados-i-1bi\trabalho_edi_1bi\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"listaDE.c"
+	"listaSE.c"
+
+1554684699 c:\users\pichau\documents\github\trabalho-estrutura-de-dados-i-1bi\trabalho_edi_1bi\listade.c
+	"listaDE.h"
+
+1554684699 c:\users\pichau\documents\github\trabalho-estrutura-de-dados-i-1bi\trabalho_edi_1bi\listade.h
+
+1554684699 c:\users\pichau\documents\github\trabalho-estrutura-de-dados-i-1bi\trabalho_edi_1bi\listase.c
+	"listaSE.h"
+
+1554684699 c:\users\pichau\documents\github\trabalho-estrutura-de-dados-i-1bi\trabalho_edi_1bi\listase.h
+

@@ -8,6 +8,8 @@
 void testListaDE();
 void testListaSE();
 ListaSE LerDados(char* nomeArquivoRodovia, char* nomeArquivoCidades);
+ListaSE rodoviasCidade(char* nomeCidade, ListaSE lstRodovia);
+
 int main()
 {
     // TESTES
@@ -18,7 +20,10 @@ int main()
     ListaSE lstSE = LerDados("listaRodovias.txt", "listaCidades.txt");
     printf("\nListaSE:\n");
     printListaSE(lstSE);
-
+    ListaSE lstvix;
+    lstvix = rodoviasCidade("vix", lstSE);
+    printf("Rodovias que passam por vix: \n\n");
+    printListaSE(lstvix);
     return 0;
 }
 
@@ -109,6 +114,24 @@ ListaSE LerDados(char* nomeArquivoRodovia, char* nomeArquivoCidades)
         }
     }
     return lstRodovias;
+}
+
+ListaSE rodoviasCidade(char* nomeCidade, ListaSE lstRodovia)
+{
+    ListaSE rodovias = NULL;
+    rodovias = inicListaSE();
+    for(primListaSE(lstRodovia); !fimListaSE(lstRodovia); segListaSE(lstRodovia))
+    {
+        for(primListaDE(lstRodovia->iterador->info.cidades); !fimListaDE(lstRodovia->iterador->info.cidades); segListaDE(lstRodovia->iterador->info.cidades))
+        {
+            if(strcmp(nomeCidade, lstRodovia->iterador->info.cidades->iterador->info) == 0)
+            {
+                anxListaSE(rodovias, lstRodovia->iterador->info);
+                break;
+            }
+        }
+    }
+    return rodovias;
 }
 
 void testListaDE()
